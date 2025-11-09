@@ -1,18 +1,14 @@
-/* Estilos */
+/* --------- Paleta de Colores C.I.A.M. (Tema Mixto) --------- */
 :root {
-  --ciam-bg: #f4f4f4;
-  --ciam-black: #1a252f;
-  --ciam-gold: #FFD700;
-  --ciam-white: #FFFFFF;
-  --ciam-text-light: #f4f4f4;
-  --ciam-text-dark: #333333;
+  --ciam-bg: #f4f4f4;       /* Gris claro (para fondos de sección) */
+  --ciam-black: #1a252f;    /* Negro/Azul oscuro (para footer y navbar) */
+  --ciam-gold: #FFD700;     /* Dorado/Amarillo (acento) */
+  --ciam-white: #FFFFFF;     /* Blanco (para fondos de tarjeta y body) */
+  --ciam-text-light: #f4f4f4; /* Texto claro (usado en footer/navbar) */
+  --ciam-text-dark: #333333;   /* Texto oscuro (default) */
 }
 
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
+/* --------- Tipografía de Marca --------- */
 h1,
 h2,
 h3,
@@ -21,13 +17,21 @@ h3,
   letter-spacing: 1px;
 }
 
+/* --------- Corrección Responsiva (Overflow) --------- */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   color: var(--ciam-text-dark);
-  background-color: var(--ciam-white);
+  background-color: var(--ciam-white); /* Fondo del body blanco */
   position: relative;
 }
 
+/* --------- Componentes Personalizados (Botones) --------- */
 .btn-gold {
   background-color: var(--ciam-gold);
   border-color: var(--ciam-gold);
@@ -43,17 +47,33 @@ body {
   transform: translateY(-3px);
 }
 
+/* --------- Colores de Texto y Fondo --------- */
 .text-gold {
   color: var(--ciam-gold);
 }
 
 .bg-dark-subtle {
+  /* Fondo gris claro sutil */
   background-color: var(--ciam-bg) !important;
 }
 .bg-ciam-black {
   background-color: var(--ciam-black);
 }
 
+/* --------- Sección Hero (Portada) --------- */
+.hero-section {
+  min-height: 100vh;
+  /* Esta es la imagen principal */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('fondo.png') no-repeat center center/cover;
+  color: var(--ciam-white);
+}
+.hero-section h1,
+.hero-section p {
+  color: var(--ciam-white) !important;
+}
+
+/* --------- Sección Sobre Nosotros (Tabs y Carrusel) --------- */
 .nav-tabs {
   border-bottom: 1px solid var(--ciam-gold);
 }
@@ -76,29 +96,31 @@ body {
 }
 
 .tab-content {
-  background-color: var(--ciam-white); 
+  background-color: var(--ciam-white); /* Fondo blanco para las pestañas */
   border-radius: 0 0 8px 8px;
-  border: 1px solid #eee; 
+  border: 1px solid #eee; /* Borde sutil */
   border-top: 0;
 }
 
-.hero-section {
-  min-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('fondo.png') no-repeat center center/cover;
-  color: var(--ciam-white);
-}
-.hero-section h1,
-.hero-section p {
-  color: var(--ciam-white) !important;
+/* Estilos para el carrusel de la sección "Sobre" */
+#sobre-carousel .carousel-item img {
+  height: 450px; /* Altura fija para el carrusel */
+  object-fit: cover; /* Evita que las imágenes se estiren */
 }
 
+/* Ajuste para móviles, para que no sea tan alto */
+@media (max-width: 768px) {
+  #sobre-carousel .carousel-item img {
+    height: 300px; 
+  }
+}
 
+/* --------- Tarjetas (Programas y Sedes) --------- */
 .card-program,
 .card-sede,
 .form-box {
-  background-color: var(--ciam-white);
-  border: 1px solid #dee2e6; 
+  background-color: var(--ciam-white); /* Fondo blanco para las tarjetas */
+  border: 1px solid #dee2e6; /* Borde claro */
   border-radius: 8px;
   transition: all 0.3s ease;
 }
@@ -112,11 +134,11 @@ body {
 .card-sede {
   border-top: 5px solid var(--ciam-gold);
 }
+/* Estilo para imágenes de sedes */
 .card-sede .card-img-top {
   height: 220px;
   object-fit: cover;
 }
-
 
 .program-icon {
   font-size: 3rem;
@@ -124,6 +146,7 @@ body {
   margin-bottom: 15px;
 }
 
+/* --------- Formulario (Inscripciones) --------- */
 .form-box {
   border-top: 5px solid var(--ciam-gold);
 }
@@ -134,7 +157,7 @@ body {
 }
 
 .form-control, .form-select {
-  background-color: #f8f9fa; 
+  background-color: #f8f9fa; /* Un gris muy claro para los campos */
 }
 
 .step {
@@ -156,39 +179,48 @@ body {
   flex-shrink: 0;
 }
 
+/* --------- Dinamismo: Navegación (Fondo Oscuro y Sticky) --------- */
 .navbar {
-  /* Color Secciones */
-  background-color: #000000; 
+  /* Mismo color que el footer */
+  background-color: var(--ciam-black); /* Es el color #1a252f */
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  /* ¡CAMBIO! Transición para el efecto de "encoger" */
   transition: padding 0.3s ease-in-out;
-  border-bottom: 1px solid #000000;
+  /* Borde sutil que combine con el oscuro */
+  border-bottom: 1px solid #3b5064; 
 }
 
+/* ¡CLASE PARA "ENCOGER"! Esto es lo que "encoge" la barra */
 .navbar.scrolled {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  background-color: #000000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding-top: 0.3rem; /* Padding más pequeño */
+  padding-bottom: 0.3rem;
+  background-color: var(--ciam-black);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Ajuste de tamaño de logo (con transición) */
 .navbar .navbar-brand img {
-  height: 50px; 
+  height: 50px; /* Tamaño normal */
   transition: height 0.3s ease-in-out;
 }
 
 .navbar.scrolled .navbar-brand img {
-  height: 40px; 
+  height: 40px; /* Tamaño al hacer scroll */
 }
 
+/* Los enlaces del menú ahora son claros (gracias a navbar-dark en el HTML) */
 .navbar .nav-link {
   font-weight: 500;
+  /* El color lo pone 'navbar-dark' de Bootstrap, pero podemos asegurarlo */
+  color: rgba(255, 255, 255, 0.75);
 }
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
-  color: var(--ciam-gold);
+  color: var(--ciam-gold); /* El acento dorado se mantiene */
 }
 
+/* --------- Dinamismo: Animación al Scroll --------- */
 .hidden {
   opacity: 0;
   transform: translateY(30px);
@@ -200,6 +232,20 @@ body {
   transform: translateY(0);
 }
 
+/* --------- Footer (Fondo Oscuro) --------- */
 .bg-ciam-black {
   color: var(--ciam-text-light);
+}
+
+/* Estilos para el mensaje de estado del formulario (para AJAX) */
+#form-status .alert-success {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+}
+
+#form-status .alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
 }
