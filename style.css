@@ -21,6 +21,7 @@ body {
   color: var(--ciam-text-dark);
   background-color: var(--ciam-white);
   position: relative;
+  overflow-x: hidden;
 }
 
 .btn-gold {
@@ -197,4 +198,5 @@ body {
 
 .bg-ciam-black {
   color: var(--ciam-text-light);
+
 }
