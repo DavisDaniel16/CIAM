@@ -8,6 +8,11 @@
   --ciam-text-dark: #333333;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 h1,
 h2,
 h3,
@@ -21,7 +26,6 @@ body {
   color: var(--ciam-text-dark);
   background-color: var(--ciam-white);
   position: relative;
-  overflow-x: hidden;
 }
 
 .btn-gold {
@@ -198,5 +202,4 @@ body {
 
 .bg-ciam-black {
   color: var(--ciam-text-light);
-
 }
