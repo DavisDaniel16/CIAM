@@ -1,0 +1,240 @@
+:root {
+  --ciam-bg: #f4f4f4;       
+  --ciam-black: #1a252f;    
+  --ciam-gold: #FFD700;     
+  --ciam-white: #FFFFFF;     
+  --ciam-text-light: #f4f4f4; 
+  --ciam-text-dark: #333333;   
+}
+
+/*  Tipografía de Marca*/
+h1,
+h2,
+h3,
+.navbar-brand {
+  font-family: 'Alfa Slab One', serif;
+  letter-spacing: 1px;
+}
+
+/*  Corrección Responsiva  */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--ciam-text-dark);
+  background-color: var(--ciam-white); 
+  position: relative;
+}
+
+/*  Componentes Personalizados (Botones) */
+.btn-gold {
+  background-color: var(--ciam-gold);
+  border-color: var(--ciam-gold);
+  color: var(--ciam-text-dark);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+  background-color: #d1b000;
+  border-color: #d1b000;
+  color: var(--ciam-text-dark);
+  transform: translateY(-3px);
+}
+
+/*  Colores de Texto y Fondo */
+.text-gold {
+  color: var(--ciam-gold);
+}
+
+.bg-dark-subtle {
+  background-color: var(--ciam-bg) !important;
+}
+.bg-ciam-black {
+  background-color: var(--ciam-black);
+}
+
+.hero-section {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('fondo.png') no-repeat center center/cover;
+  color: var(--ciam-white);
+}
+.hero-section h1,
+.hero-section p {
+  color: var(--ciam-white) !important;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid var(--ciam-gold);
+}
+
+.nav-tabs .nav-link {
+  color: var(--ciam-text-dark);
+  border: 0;
+  border-bottom: 3px solid transparent;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--ciam-gold);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--ciam-gold);
+  font-weight: bold;
+  background-color: transparent;
+  border-bottom: 3px solid var(--ciam-gold);
+}
+
+.tab-content {
+  background-color: var(--ciam-white);
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #eee;
+  border-top: 0;
+}
+
+/* Estilo carrusel */
+#sobre-carousel .carousel-item img {
+  height: 450px; 
+  object-fit: cover; 
+}
+
+/* Ajuste móvil, */
+@media (max-width: 768px) {
+  #sobre-carousel .carousel-item img {
+    height: 300px; 
+  }
+}
+
+/*  Tarjetas (Programas y Sedes) */
+.card-program,
+.card-sede,
+.form-box {
+  background-color: var(--ciam-white); 
+  border: 1px solid #dee2e6; 
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.card-program:hover,
+.card-sede:hover {
+  transform: translateY(-5px);
+  border-color: var(--ciam-gold);
+}
+
+.card-sede {
+  border-top: 5px solid var(--ciam-gold);
+}
+/* Estilo para imágenes de sedes */
+.card-sede .card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+.program-icon {
+  font-size: 3rem;
+  color: var(--ciam-gold);
+  margin-bottom: 15px;
+}
+
+/*  Formulario (Inscripciones) */
+.form-box {
+  border-top: 5px solid var(--ciam-gold);
+}
+
+.form-label {
+  color: var(--ciam-text-dark);
+  font-weight: 500;
+}
+
+.form-control, .form-select {
+  background-color: #f8f9fa; 
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+.step-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--ciam-text-dark);
+  background-color: var(--ciam-gold);
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+/*  Navegación   */
+.navbar {
+  
+  background-color: var(--ciam-black); 
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition: padding 0.3s ease-in-out;
+  border-bottom: 1px solid #3b5064; 
+}
+
+.navbar.scrolled {
+  padding-top: 0.3rem; 
+  padding-bottom: 0.3rem;
+  background-color: var(--ciam-black);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.navbar .navbar-brand img {
+  height: 50px; 
+  transition: height 0.3s ease-in-out;
+}
+
+.navbar.scrolled .navbar-brand img {
+  height: 40px; 
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--ciam-gold); 
+}
+
+/*  Dinamismo: Animación al Scroll  */
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*  Footer (Fondo Oscuro)  */
+.bg-ciam-black {
+  color: var(--ciam-text-light);
+}
+
+#form-status .alert-success {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+}
+
+#form-status .alert-danger {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
