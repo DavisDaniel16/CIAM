@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Programas - C.I.A.M. Adora-Sión</title>
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -14,22 +15,24 @@
   <nav id="navbar-ciam" class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <img src="logo/LAdoracion.png" alt="Logo C.I.A.M. Adora-Sión" height="45">
+        <img src="logo/LAdoracion.png" alt="Logo C.I.A.M." height="45">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
           <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre Nosotros</a></li>
           <li class="nav-item"><a class="nav-link active" href="programas.html">Programas</a></li>
           <li class="nav-item"><a class="nav-link" href="sedes.html">Sedes</a></li>
           <li class="nav-item"><a class="nav-link" href="inscripciones.html">Inscripciones</a></li>
+          <li class="nav-item ms-lg-3">
+            <a href="https://wa.me/593997137319?text=¡Hola!%20Quisiera%20más%20información%20sobre%20la%20academia%20C.I.A.M.%20Adora-Sión." target="_blank" class="btn btn-gold ms-lg-3 mt-2 mt-lg-0">
+              <i class="bi bi-whatsapp me-2"></i> Contacto
+            </a>
+          </li>
         </ul>
-        <a href="https://wa.me/593997137319?text=¡Hola!%20Quisiera%20más%20información%20sobre%20la%20academia%20C.I.A.M.%20Adora-Sión." target="_blank" class="btn btn-gold ms-lg-3 mt-2 mt-lg-0">
-          <i class="bi bi-whatsapp"></i> Contacto
-        </a>
       </div>
     </div>
   </nav>
@@ -39,6 +42,8 @@
       <div class="container my-5">
         <h2 class="text-center text-gold mb-5 hidden">DESCUBRE TU TALENTO</h2>
         <div class="row g-4">
+          
+          <!-- Piano -->
           <div class="col-lg-4 col-md-6 hidden">
             <div class="card h-100 card-program">
               <div class="card-body">
@@ -48,66 +53,152 @@
               </div>
             </div>
           </div>
+
+          <!-- Guitarra -->
           <div class="col-lg-4 col-md-6 hidden">
             <div class="card h-100 card-program">
               <div class="card-body">
                 <div class="program-icon">🎸</div>
-                <h3 class="card-title">Guitarra (Acústica/Eléctrica)</h3>
+                <h3 class="card-title">Guitarra</h3>
                 <p>Domina acordes, arpegios, solos y el sonido de la alabanza moderna.</p>
               </div>
             </div>
           </div>
+
+          <!-- Requinto -->
+          <div class="col-lg-4 col-md-6 hidden">
+            <div class="card h-100 card-program">
+              <div class="card-body">
+                <div class="program-icon">
+                  <img src="instrumentos/requinto.png" 
+                      alt="Requinto Icon" 
+                      style="width:60px; height:60px;">
+                </div>
+                <h3 class="card-title">Requinto</h3>
+                <p>Domina el arte del punteo y la melodía en la música tradicional y cristiana.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bajo --> 
+          <div class="col-lg-4 col-md-6 hidden">
+            <div class="card h-100 card-program">
+              <div class="card-body">
+                <div class="program-icon">
+                  <img src="instrumentos/bajoelectrico.png" 
+                      alt="Bajo Electrico Icon" 
+                      style="width:60px; height:60px;">
+                </div>
+                <h3 class="card-title">Bajo Electrico</h3>
+                <p>El corazón rítmico de la banda. Aprende groove, escalas y acompañamiento.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Violín -->
+          <div class="col-lg-4 col-md-6 hidden">
+            <div class="card h-100 card-program">
+              <div class="card-body">
+                <div class="program-icon">🎻</div>
+                <h3 class="card-title">Violín</h3>
+                <p>Elegancia y técnica. Desde lo clásico hasta la adoración contemporánea.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bandolín -->
+          <div class="col-lg-4 col-md-6 hidden">
+            <div class="card h-100 card-program">
+              <div class="card-body">
+                <div class="program-icon">🪕</div>
+                <h3 class="card-title">Bandolín</h3>
+                <p>Sonidos autóctonos. Aprende la ejecución de este instrumento tradicional.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charango -->
+          <div class="col-lg-4 col-md-6 hidden">
+            <div class="card h-100 card-program">
+              <div class="card-body">
+                <div class="program-icon">
+                  <img src="https://cdn-icons-png.flaticon.com/512/8027/8027784.png" 
+                      alt="Charango Icon" 
+                      style="width:60px; height:60px;">
+                </div>
+                <h3 class="card-title">Charango</h3>
+                <p>La voz de los Andes. Rasgueos y melodías para enriquecer la alabanza.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Canto -->
           <div class="col-lg-4 col-md-6 hidden">
             <div class="card h-100 card-program">
               <div class="card-body">
                 <div class="program-icon">🎤</div>
-                <h3 class="card-title">Canto y Técnica Vocal</h3>
+                <h3 class="card-title">Canto</h3>
                 <p>Aprende respiración, afinación, proyección, y desarrolla tu voz única.</p>
               </div>
             </div>
           </div>
+
+          <!-- Batería -->
           <div class="col-lg-4 col-md-6 hidden">
             <div class="card h-100 card-program">
               <div class="card-body">
-                <div class="program-icon">🥁</div>
-                <h3 class="card-title">Batería y Percusión</h3>
+                <div class="program-icon">
+                  <img src="instrumentos/bateria.png" 
+                      alt="Batería Icon" 
+                      style="width:60px; height:60px;">
+                </div>
+                <h3 class="card-title">Batería</h3>
                 <p>Coordinación, ritmos fundamentales, fills y técnicas de adoración.</p>
               </div>
             </div>
           </div>
+          
+          <!-- Otros -->
+          <div class="col-lg-4 col-md-6 hidden">
+            <div class="card h-100 card-program">
+              <div class="card-body">
+                <div class="program-icon">🎵</div>
+                <h3 class="card-title">Otros Instrumentos</h3>
+                <p>¿Tienes otro instrumento en mente? Contáctanos para evaluar opciones.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teoría -->
           <div class="col-lg-4 col-md-6 hidden">
             <div class="card h-100 card-program">
               <div class="card-body">
                 <div class="program-icon">🎼</div>
-                <h3 class="card-title">Teoría y Armonía</h3>
+                <h3 class="card-title">Teoría Musical</h3>
                 <p>Entiende el lenguaje de la música, lee partituras y crea tus propias progresiones.</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 hidden">
-            <div class="card h-100 card-program">
-              <div class="card-body">
-                <div class="program-icon">🙌</div>
-                <h3 class="card-title">Dirección de Alabanza</h3>
-                <p>Liderazgo, teología de la adoración y manejo técnico de equipos de música.</p>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
   </main>
 
-  <footer id="contacto" class="bg-ciam-black text-white py-5">
+  <footer id="contacto" class="bg-ciam-black text-white py-4 mt-auto">
     <div class="container text-center">
-      <div class="mb-3 hidden">
-        <h4 class="mb-3 text-gold">C.I.A.M. ADORA-SIÓN</h4>
-        <p>Matriz Cajabamba | Sede Puyo | Sede Guaranda</p>
-        <a href="https://www.facebook.com/profile.php?id=100063764007134" class="text-white fs-2 mx-3"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.tiktok.com/@ciam.adorasion.oficial" class="text-white fs-2 mx-3"><i class="bi bi-tiktok"></i></a>
-        <a href="https://wa.me/593997137319?text=¡Hola!%20Quisiera%20más%20información%20sobre%20la%20academia%20C.I.A.M.%20Adora-Sión." target="_blank" class="text-white fs-2 mx-3"><i class="bi bi-whatsapp"></i></a>
+      <div class="mb-2">
+        <h5 class="mb-2 text-gold" style="font-family: 'Alfa Slab One', serif; letter-spacing: 1px;">C.I.A.M. ADORA-SIÓN</h5>
+        <p class="small mb-2" style="opacity: 0.7;">Matriz Cajabamba | Sede Puyo | Sede Guaranda</p>
+        <div class="mt-2">
+          <a href="https://www.facebook.com/profile.php?id=100063764007134" class="text-white fs-5 mx-2 opacity-75 hover-opacity-100"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.tiktok.com/@ciam.adorasion.oficial" class="text-white fs-5 mx-2 opacity-75 hover-opacity-100"><i class="bi bi-tiktok"></i></a>
+          <a href="https://wa.me/593997137319?text=¡Hola!" target="_blank" class="text-white fs-5 mx-2 opacity-75 hover-opacity-100"><i class="bi bi-whatsapp"></i></a>
+        </div>
       </div>
-      <p class="mb-0 mt-4">&copy; 2025 C.I.A.M. Adora-Sión. Todos los derechos reservados.</p>
+      <hr style="opacity: 0.1; margin: 10px 0;">
+      <p class="mb-0 small opacity-50" style="font-size: 0.8rem;">© 2025 C.I.A.M. Adora-Sión. Todos los derechos reservados.</p>
     </div>
   </footer>
 
