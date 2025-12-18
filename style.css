@@ -1,121 +1,188 @@
+/* --------- Paleta de Colores C.I.A.M. --------- */
 :root {
-  --ciam-bg: #f4f4f4;       
-  --ciam-black: #1a252f;    
-  --ciam-gold: #FFD700;     
-  --ciam-white: #FFFFFF;     
-  --ciam-text-light: #f4f4f4; 
-  --ciam-text-dark: #333333;   
+  --ciam-bg: #f4f4f4;
+  --ciam-black: #1a252f;
+  --ciam-gold: #FFD700;
+  --ciam-white: #FFFFFF;
+  --ciam-text-light: #f4f4f4;
+  --ciam-text-dark: #333333;
 }
 
-/*  Tipografía de Marca*/
+/* --------- TIPOGRAFÍA C.I.A.M. (Alfa Slab One para títulos) --------- */
 h1,
 h2,
 h3,
+h5, 
 .navbar-brand {
-  font-family: 'Alfa Slab One', serif;
+  font-family: 'Alfa Slab One', serif; 
   letter-spacing: 1px;
 }
 
-/*  Corrección Responsiva  */
+h1 { font-size: 3rem; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.6rem; }
+
+/* --------- TIPOGRAFÍA BASE (Roboto) --------- */
+body {
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 400;
+  color: var(--ciam-text-dark);
+  background-color: var(--ciam-white);
+  position: relative;
+  padding-top: 0;
+}
+
+/* --------- Configuración Base --------- */
 html,
 body {
   max-width: 100%;
   overflow-x: hidden;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  color: var(--ciam-text-dark);
-  background-color: var(--ciam-white); 
-  position: relative;
-}
-
-/*  Componentes Personalizados (Botones) */
+/* --------- Componentes (Botones) --------- */
 .btn-gold {
   background-color: var(--ciam-gold);
   border-color: var(--ciam-gold);
   color: var(--ciam-text-dark);
-  font-weight: 700;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .btn-gold:hover {
   background-color: #d1b000;
   border-color: #d1b000;
-  color: var(--ciam-text-dark);
   transform: translateY(-3px);
 }
 
-/*  Colores de Texto y Fondo */
-.text-gold {
-  color: var(--ciam-gold);
-}
-
-.bg-dark-subtle {
-  background-color: var(--ciam-bg) !important;
-}
+.text-gold { color: var(--ciam-gold); }
+.bg-dark-subtle { background-color: var(--ciam-bg) !important; }
 .bg-ciam-black {
   background-color: var(--ciam-black);
+  color: var(--ciam-text-light);
 }
 
+/* --------- HERO (Estructura de Dos Columnas) --------- */
 .hero-section {
-  min-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('fondo.png') no-repeat center center/cover;
+  position: relative;
+  min-height: 650px; 
+  background-color: var(--ciam-black); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--ciam-white);
+  overflow: hidden;
+  padding: 50px 0; 
 }
+
+.hero-overlay {
+  display: none; 
+}
+
 .hero-section h1,
 .hero-section p {
   color: var(--ciam-white) !important;
 }
 
-.nav-tabs {
-  border-bottom: 1px solid var(--ciam-gold);
+.hero-video-container {
+    position: relative;
+    min-height: 550px;
+    overflow: hidden;
 }
 
-.nav-tabs .nav-link {
-  color: var(--ciam-text-dark);
-  border: 0;
-  border-bottom: 3px solid transparent;
+.hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
 }
 
-.nav-tabs .nav-link:hover {
+/* --------- POSICIÓN DEL BOTÓN DE VOLUMEN --------- */
+#mute-btn {
+    position: absolute; 
+    bottom: 15px;
+    right: 15px;
+    z-index: 10;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#mute-btn:hover {
+    background-color: var(--ciam-gold);
+    color: var(--ciam-text-dark);
+    border-color: var(--ciam-gold);
+    transform: scale(1.1);
+}
+
+#mute-btn i {
+    line-height: 0;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 991.98px) {
+    .hero-video-container {
+        min-height: 350px;
+    }
+    .hero-section {
+        min-height: auto;
+        padding: 20px 0;
+    }
+}
+
+/* --------- Navbar --------- */
+.navbar {
+  background-color: var(--ciam-black);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #3b5064;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar.scrolled {
+  padding: 0.2rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .nav-link {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
   color: var(--ciam-gold);
 }
 
-.nav-tabs .nav-link.active {
-  color: var(--ciam-gold);
-  font-weight: bold;
-  background-color: transparent;
-  border-bottom: 3px solid var(--ciam-gold);
+.navbar .navbar-brand img {
+    height: 50px;
+    transition: height 0.3s ease-in-out;
 }
 
-.tab-content {
-  background-color: var(--ciam-white);
-  border-radius: 0 0 8px 8px;
-  border: 1px solid #eee;
-  border-top: 0;
+.navbar.scrolled .navbar-brand img {
+    height: 40px;
 }
 
-/* Estilo carrusel */
-#sobre-carousel .carousel-item img {
-  height: 450px; 
-  object-fit: cover; 
-}
-
-/* Ajuste móvil, */
-@media (max-width: 768px) {
-  #sobre-carousel .carousel-item img {
-    height: 300px; 
-  }
-}
-
-/*  Tarjetas (Programas y Sedes) */
+/* --------- Cards --------- */
 .card-program,
 .card-sede,
 .form-box {
-  background-color: var(--ciam-white); 
-  border: 1px solid #dee2e6; 
+  background-color: var(--ciam-white);
+  border: 1px solid #dee2e6;
   border-radius: 8px;
   transition: all 0.3s ease;
 }
@@ -126,35 +193,24 @@ body {
   border-color: var(--ciam-gold);
 }
 
-.card-sede {
-  border-top: 5px solid var(--ciam-gold);
-}
-/* Estilo para imágenes de sedes */
-.card-sede .card-img-top {
-  height: 220px;
-  object-fit: cover;
-}
-
 .program-icon {
   font-size: 3rem;
   color: var(--ciam-gold);
-  margin-bottom: 15px;
 }
 
-/*  Formulario (Inscripciones) */
-.form-box {
-  border-top: 5px solid var(--ciam-gold);
-}
-
+/* --------- Formularios --------- */
 .form-label {
-  color: var(--ciam-text-dark);
-  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
 }
 
-.form-control, .form-select {
-  background-color: #f8f9fa; 
+.form-control,
+.form-select {
+  background-color: #f8f9fa;
+  font-family: 'Roboto', sans-serif;
 }
 
+/* --------- PASOS / STEP NUMBERS (NUEVO) --------- */
 .step {
   display: flex;
   align-items: flex-start;
@@ -174,43 +230,12 @@ body {
   flex-shrink: 0;
 }
 
-/*  Navegación   */
-.navbar {
-  
-  background-color: var(--ciam-black); 
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  transition: padding 0.3s ease-in-out;
-  border-bottom: 1px solid #3b5064; 
+.step-text h5 {
+  margin-bottom: 5px;
+  color: var(--ciam-black);
 }
 
-.navbar.scrolled {
-  padding-top: 0.3rem; 
-  padding-bottom: 0.3rem;
-  background-color: var(--ciam-black);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-
-.navbar .navbar-brand img {
-  height: 50px; 
-  transition: height 0.3s ease-in-out;
-}
-
-.navbar.scrolled .navbar-brand img {
-  height: 40px; 
-}
-
-.navbar .nav-link {
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-}
-.navbar .nav-link:hover,
-.navbar .nav-link.active {
-  color: var(--ciam-gold); 
-}
-
-/*  Dinamismo: Animación al Scroll  */
+/* --------- Animaciones --------- */
 .hidden {
   opacity: 0;
   transform: translateY(30px);
@@ -222,7 +247,7 @@ body {
   transform: translateY(0);
 }
 
-/*  Footer (Fondo Oscuro)  */
+/* --------- Footer --------- */
 .bg-ciam-black {
   color: var(--ciam-text-light);
 }
@@ -237,4 +262,10 @@ body {
   color: #842029;
   background-color: #f8d7da;
   border-color: #f5c2c7;
+}
+
+#form-status .alert-warning {
+    color: #664d03;
+    background-color: #fff3cd;
+    border-color: #ffecb5;
 }
