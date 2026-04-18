@@ -1,149 +1,167 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================================
-       DINAMISMO 1: NAVEGACIÓN QUE SE ENCOGE
-       ========================================= */
+    //Navegación dinámica (Sticky Navbar)
     const navbar = document.getElementById('navbar-ciam');
-
     if (navbar) {
         window.addEventListener("scroll", function() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
             if (scrollTop > 50) { 
                 navbar.classList.add('scrolled');
             } else { 
                 navbar.classList.remove('scrolled');
             }
-        }, false);
+        });
     }
 
-    /* =========================================
-       DINAMISMO 2: ANIMACIÓN AL DESPLAZAR (Intersection Observer)
-       ========================================= */
-    const observerOptions = {
-        root: null, 
-        rootMargin: '0px',
-        threshold: 0.1 
-    };
-
-    const observerCallback = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible'); 
-                observer.unobserve(entry.target); 
-            }
-        });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    //Animaciones al hacer scroll (Intersection Observer)
     const hiddenElements = document.querySelectorAll('.hidden');
-    hiddenElements.forEach(el => observer.observe(el));
-
-
-    /* =========================================
-       DINAMISMO 3: ENVÍO DE FORMULARIO (AJAX) Y VALIDACIÓN
-       ========================================= */
-    
-    const form = document.getElementById("inscripcion-form");
-    const formStatus = document.getElementById("form-status");
-    const formButton = document.getElementById("form-submit-btn");
-
-    // Función de validación del lado del cliente
-    function validateForm(form) {
-        let isValid = true;
-        formStatus.innerHTML = ""; // Limpiar mensajes de estado
-
-        // Bootstrap ya maneja la clase 'was-validated', pero podemos forzarla
-        form.classList.add('was-validated'); 
-
-        // Recorre todos los campos y verifica si son válidos según HTML5/Bootstrap
-        form.querySelectorAll('input:required, select:required, textarea:required').forEach(input => {
-            if (!input.checkValidity()) {
-                isValid = false;
-                // Opcional: desplázate al primer campo inválido para guiar al usuario
-                // input.focus(); 
-            }
-        });
-
-        if (!isValid) {
-            formStatus.innerHTML = "<div class='alert alert-warning'>Por favor, completa todos los campos obligatorios correctamente.</div>";
-        }
-
-        return isValid;
-    }
-
-    async function handleSubmit(event) {
-        event.preventDefault(); 
-        
-        // 🚨 PASO DE VALIDACIÓN AGREGADO 🚨
-        if (!validateForm(form)) {
-            // Detiene el proceso si la validación falla
-            return; 
-        }
-
-        const data = new FormData(event.target);
-        
-        // Cambia el estado del botón
-        const originalText = formButton.innerText;
-        formButton.disabled = true;
-        formButton.innerText = "Enviando...";
-
-        try {
-            const response = await fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
+    if (hiddenElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
+        }, { threshold: 0.1 });
+        hiddenElements.forEach(el => observer.observe(el));
+    }
 
-            if (response.ok) {
-                // Éxito
-                formStatus.innerHTML = "<div class='alert alert-success'>¡Gracias por tu mensaje! Ha sido enviado.</div>";
-                form.reset(); // ¡Borra los campos del formulario!
-                form.classList.remove('was-validated'); // Quita las validaciones visuales
-            } else {
-                // Error (si Formspree da un error)
-                const errorData = await response.json();
-                if (Object.hasOwn(errorData, 'errors')) {
-                    formStatus.innerHTML = "<div class='alert alert-danger'>" + errorData["errors"].map(error => error["message"]).join(", ") + "</div>";
+    //Validación y envío del formulario (AJAX)
+    const form = document.getElementById("inscripcion-form");
+    if (form) {
+        const phoneInput = document.getElementById("telefono");
+        const nameInput = document.getElementById("nombre");
+        const formStatus = document.getElementById("form-status");
+        const formButton = document.getElementById("form-submit-btn");
+
+        if (phoneInput) {
+            phoneInput.addEventListener("input", function() {
+                this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+                if (this.value.length === 10) {
+                    this.classList.add("is-valid");
+                    this.classList.remove("is-invalid");
                 } else {
-                    formStatus.innerHTML = "<div class='alert alert-danger'>Oops! Hubo un problema al enviar tu formulario.</div>";
+                    this.classList.remove("is-valid");
                 }
-            }
-        } catch (error) {
-            // Error (si no hay conexión)
-            formStatus.innerHTML = "<div class='alert alert-danger'>Oops! Hubo un problema de conexión.</div>";
+            });
         }
 
-        // Restaura el botón
-        formButton.disabled = false;
-        formButton.innerText = originalText;
+        if (nameInput) {
+            nameInput.addEventListener("blur", function() {
+                if (this.value.length > 3) {
+                    this.classList.add("is-valid");
+                    this.classList.remove("is-invalid");
+                }
+            });
+        }
+
+        form.addEventListener("submit", async function(e) {
+            e.preventDefault();
+            if (!form.checkValidity()) {
+                form.classList.add('was-validated');
+                return;
+            }
+
+            const data = new FormData(form);
+            const originalText = formButton.innerText;
+            formButton.disabled = true;
+            formButton.innerText = "Enviando...";
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    formStatus.innerHTML = "<div class='alert alert-success'>¡Gracias! Mensaje enviado correctamente.</div>";
+                    form.reset();
+                    form.classList.remove('was-validated');
+                } else {
+                    formStatus.innerHTML = "<div class='alert alert-danger'>Error al enviar. Inténtalo de nuevo.</div>";
+                }
+            } catch (error) {
+                formStatus.innerHTML = "<div class='alert alert-danger'>Error de conexión.</div>";
+            }
+            formButton.disabled = false;
+            formButton.innerText = originalText;
+        });
     }
 
-    // Solo añade el listener si el formulario existe en la página
-    if (form) {
-        form.addEventListener("submit", handleSubmit);
+    //Efecto Parallax en el Hero
+    const hero = document.querySelector('.hero-section');
+    const heroContent = document.querySelector('.animate-up');
+    if (hero && heroContent && window.innerWidth > 992) {
+        hero.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 50;
+            const moveY = (e.clientY - window.innerHeight / 2) / 50;
+            heroContent.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+        hero.addEventListener('mouseleave', () => {
+            heroContent.style.transform = `translate(0px, 0px)`;
+            heroContent.style.transition = 'transform 0.5s ease-out';
+        });
+        hero.addEventListener('mouseenter', () => {
+            heroContent.style.transition = 'none';
+        });
     }
 
-    /* =========================================
-       4. CONTROL DE VOLUMEN (VIDEO DE FONDO)
-       ========================================= */
+    //Control de sonido del video de fondo
     const video = document.getElementById('hero-video');
     const muteBtn = document.getElementById('mute-btn');
     const muteIcon = document.getElementById('mute-icon');
 
-    if (video && muteBtn) {
-        muteBtn.addEventListener('click', function () {
+    if (video && muteBtn && muteIcon) {
+        video.muted = true;
+        muteBtn.onclick = function() {
             if (video.muted) {
-                video.muted = false; // Activar sonido
-                muteIcon.classList.remove('bi-volume-mute-fill');
-                muteIcon.classList.add('bi-volume-up-fill');
+                video.muted = false;
+                video.volume = 1.0;
+                video.play();
+                muteIcon.className = 'bi bi-volume-up-fill';
+                muteBtn.style.backgroundColor = 'var(--ciam-gold)';
+                muteBtn.style.color = 'var(--ciam-black)';
             } else {
-                video.muted = true; // Silenciar
-                muteIcon.classList.remove('bi-volume-up-fill');
-                muteIcon.classList.add('bi-volume-mute-fill');
+                video.muted = true;
+                muteIcon.className = 'bi bi-volume-mute-fill';
+                muteBtn.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                muteBtn.style.color = 'white';
             }
+        };
+    }
+
+    //Galería de imágenes (Lightbox)
+    const galleryImages = document.querySelectorAll('.card-program img, .carousel-item img');
+    if (galleryImages.length > 0) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox-overlay';
+        lightbox.innerHTML = `
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-img" src="" alt="Vista ampliada">
+        `;
+        document.body.appendChild(lightbox);
+
+        const lightboxImg = lightbox.querySelector('.lightbox-img');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+
+        galleryImages.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
         });
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
     }
 });
