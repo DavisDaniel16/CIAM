@@ -39,6 +39,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach(el => observer.observe(el));
 
+    // Forzar visibilidad inicial para elementos ya visibles en la pantalla
+    // (soluciona problema en móviles donde el observer no detecta elementos visibles al cargar)
+    setTimeout(() => {
+        hiddenElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top < windowHeight - 50 && rect.bottom > 0) {
+                el.classList.add('visible');
+                observer.unobserve(el);
+            }
+        });
+    }, 100);
+
 
     /* =========================================
        DINAMISMO 3: ENVÍO DE FORMULARIO (AJAX) Y VALIDACIÓN
