@@ -75,6 +75,8 @@ body {
   min-height: 100vh;
 }
 
+main { overflow-x: clip; }
+
 img {
   max-width: 100%;
   display: block;
@@ -1231,6 +1233,7 @@ html.js [data-reveal='zoom'].is-revealed { transform: none; }
   gap: 48px;
   align-items: center;
 }
+.split > * { min-width: 0; }
 .split-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
