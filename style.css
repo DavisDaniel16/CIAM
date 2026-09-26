@@ -77,6 +77,23 @@ body {
 
 main { overflow-x: clip; }
 
+.legal-section { min-height: calc(100vh - var(--navbar-h)); }
+.legal-page { max-width: 860px; }
+.legal-updated { margin-top: 12px; color: var(--text-low); font-size: 0.86rem; }
+.legal-content { margin-top: 42px; color: var(--text-mid); }
+.legal-content h2 {
+  margin: 34px 0 10px;
+  color: var(--text-hi);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.legal-content p,
+.legal-content li { font-size: 0.96rem; line-height: 1.8; }
+.legal-content ul { margin: 12px 0 0 22px; }
+.legal-content a { color: var(--gold-light); }
+.legal-note { margin-top: 40px; padding: 16px; border-left: 3px solid var(--gold); background: rgba(245, 197, 24, 0.06); font-size: 0.86rem !important; }
+
 .cookie-banner {
   position: fixed;
   right: 20px;
