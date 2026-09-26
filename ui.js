@@ -5,6 +5,57 @@
 // ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
+  const ANALYTICS_ID = "G-G5G32NR518";
+  const CONSENT_KEY = "ciam-analytics-consent";
+
+  const loadAnalytics = () => {
+    if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${ANALYTICS_ID}"]`)) return;
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", ANALYTICS_ID);
+
+    const analyticsScript = document.createElement("script");
+    analyticsScript.async = true;
+    analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`;
+    document.head.appendChild(analyticsScript);
+  };
+
+  const removeBanner = (banner) => banner.remove();
+
+  const showCookieBanner = () => {
+    const banner = document.createElement("section");
+    banner.className = "cookie-banner";
+    banner.setAttribute("aria-label", "Aviso de cookies");
+    banner.innerHTML = `
+      <div class="cookie-banner-content">
+        <strong>Tu privacidad importa</strong>
+        <p>Usamos cookies de Google Analytics para conocer las visitas y mejorar el sitio. No recopilamos tu nombre ni tus datos del formulario con Analytics.</p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button type="button" class="cookie-btn cookie-btn-secondary">Rechazar</button>
+        <button type="button" class="cookie-btn cookie-btn-primary">Aceptar</button>
+      </div>
+    `;
+    document.body.appendChild(banner);
+
+    banner.querySelector(".cookie-btn-primary").addEventListener("click", () => {
+      localStorage.setItem(CONSENT_KEY, "accepted");
+      loadAnalytics();
+      removeBanner(banner);
+    });
+
+    banner.querySelector(".cookie-btn-secondary").addEventListener("click", () => {
+      localStorage.setItem(CONSENT_KEY, "rejected");
+      removeBanner(banner);
+    });
+  };
+
+  const consent = localStorage.getItem(CONSENT_KEY);
+  if (consent === "accepted") loadAnalytics();
+  if (!consent) showCookieBanner();
+
   /* --------- Navbar: encoge al hacer scroll --------- */
   const navbar = document.getElementById("navbar");
   if (navbar) {
